@@ -1,7 +1,9 @@
 package org.tp8.r8t.model.impl;
 
+import org.springframework.data.elasticsearch.annotations.Document;
 import org.tp8.r8t.model.AbstractModel;
 
+@Document(indexName="Country")
 public class Country extends AbstractModel {
 
 	private static final long serialVersionUID = 6442545317212908732L;

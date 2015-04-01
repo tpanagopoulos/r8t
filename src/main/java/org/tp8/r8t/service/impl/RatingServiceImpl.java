@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 import org.tp8.r8t.exc.GenericException;
 import org.tp8.r8t.model.impl.Rating;
 import org.tp8.r8t.model.impl.Result;
-import org.tp8.r8t.persistence.dao.RatingDAO;
+import org.tp8.r8t.persistence.elasticsearch.repository.RatingRepository;
 import org.tp8.r8t.service.intf.RatingService;
 
 @Service(value = "RatingService")
 public class RatingServiceImpl implements RatingService {
 
 	@Autowired
-	private RatingDAO ratingDAO;
+	private RatingRepository ratingDAO;
 
 	@Override
 	public List<Rating> findByUser(String userId) throws GenericException {
