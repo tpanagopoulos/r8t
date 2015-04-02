@@ -35,7 +35,10 @@ public class GameFacade {
 		for (Rating rating : ratings) {
 			idSet.add(rating.getMovieId());
 		}
-
+		if (idSet.isEmpty()) {
+			idSet.add("-1");
+		}
+		
 		List<Movie> movies = movieService
 				.findExcludingIds(new LinkedList<String>(idSet));
 

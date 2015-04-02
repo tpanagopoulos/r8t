@@ -1,5 +1,7 @@
 package org.tp8.r8t.view.jsf;
 
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -8,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import org.tp8.r8t.exc.GenericException;
 import org.tp8.r8t.model.enums.Score;
 import org.tp8.r8t.model.impl.Game;
+import org.tp8.r8t.model.impl.Movie;
 import org.tp8.r8t.model.impl.Rating;
 
 @ManagedBean(name = "gameBean")
@@ -21,12 +24,13 @@ public class GameBean extends AbstractBean {
 
 	private short curItem;
 
-	public void startNew() {
+	public String startNew() {
 		// TODO: Determine userId from logged in user
 		String userId = getUserId();
 
+		List<Movie> movies = null;
 		try {
-			getGameFacade().start(userId);
+			movies = getGameFacade().start(userId);
 		} catch (GenericException exc) {
 			addError("Could not start game", exc.getMessage());
 		}
@@ -35,14 +39,24 @@ public class GameBean extends AbstractBean {
 		// TODO: game.setId();
 		game.setUserId(userId);
 		game.setDuration(0L);
-
+		game.setSelectedMovies(movies);
+		game.setRatings(new LinkedList<Rating>());
+		
 		curItem = 0;
 
-		redirect("play");
+		return "play";
 	}
 
-	public Score[] getAvailableAnswers() {
-		return Score.values();
+	public List<String> getAvailableAnswers() {
+		List<String> availableAnswers = new LinkedList<String>();
+		for (Score score : Score.values()) {
+			availableAnswers.add(score.name());
+		}
+		return availableAnswers;
+	}
+	
+	public Movie getNextItem() {
+		return game.getSelectedMovies().get(curItem);
 	}
 
 	public void submitAnswer(String scoreName) {
@@ -64,7 +78,7 @@ public class GameBean extends AbstractBean {
 		}
 	}
 
-	public void finish() {
+	public String finish() {
 		try {
 			addMessage("Successfully finished", null);
 			getGameFacade().finish(game.getRatings());
@@ -72,7 +86,7 @@ public class GameBean extends AbstractBean {
 			addError("Could not finish game", exc.getMessage());
 		}
 
-		redirect("finished");
+		return "finished";
 	}
 
 }

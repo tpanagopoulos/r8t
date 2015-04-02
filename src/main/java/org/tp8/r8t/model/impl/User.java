@@ -4,7 +4,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.tp8.r8t.model.AbstractModel;
 import org.tp8.r8t.model.enums.Gender;
 
-@Document(indexName = "User")
+@Document(indexName = "user")
 public class User extends AbstractModel {
 
 	private static final long serialVersionUID = -6675710347859895973L;

@@ -4,7 +4,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.tp8.r8t.model.AbstractModel;
 import org.tp8.r8t.model.enums.Score;
 
-@Document(indexName="Rating")
+@Document(indexName="rating")
 public class Rating extends AbstractModel {
 
 	private static final long serialVersionUID = -4554458234472449306L;

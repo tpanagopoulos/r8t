@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.tp8.r8t.model.AbstractModel;
 
-@Document(indexName = "Game")
+@Document(indexName = "game")
 public class Game extends AbstractModel {
 
 	private static final long serialVersionUID = 5547906749768893348L;

@@ -26,10 +26,12 @@
 
 			<h:panelGrid id="grid" columns="1" cellpadding="4">
 
+<!-- 				<p:outputLabel value="#{gameBean.nextItem.title}" /> -->
+
 				<p:dataTable var="item" value="#{gameBean.getAvailableAnswers()}">
 					
-					<p:column headerText="#{msg['id']}">
-						<p:commandButton action="#{gameBean.submitAnswer(item.name)}" value="#{item.name}" />
+					<p:column headerText="#{gameBean.nextItem.title}">
+						<p:commandButton action="#{gameBean.submitAnswer(item)}" value="#{item}" />
 					</p:column>
 
 				</p:dataTable>

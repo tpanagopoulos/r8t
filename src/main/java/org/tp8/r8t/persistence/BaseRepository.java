@@ -1,4 +1,4 @@
-package org.tp8.r8t.persistence.elasticsearch.repository;
+package org.tp8.r8t.persistence;
 
 import org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository;
 import org.tp8.r8t.model.BaseModel;

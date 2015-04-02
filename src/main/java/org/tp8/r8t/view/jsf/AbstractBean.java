@@ -182,7 +182,7 @@ public abstract class AbstractBean implements Serializable {
 	}
 	
 	public String getUserId() {
-		return "1";
+		return "2";
 	}
 
 }
