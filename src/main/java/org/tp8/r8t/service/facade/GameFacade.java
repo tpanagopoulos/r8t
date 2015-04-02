@@ -15,7 +15,7 @@ import org.tp8.r8t.service.intf.MovieService;
 import org.tp8.r8t.service.intf.RatingService;
 import org.tp8.r8t.service.intf.ResultService;
 
-@Component("GameFacade")
+@Component("gameFacade")
 public class GameFacade {
 
 	@Autowired
