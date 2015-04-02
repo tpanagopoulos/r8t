@@ -10,7 +10,7 @@ import org.tp8.r8t.persistence.elasticsearch.repository.MovieRepository;
 import org.tp8.r8t.service.intf.MovieService;
 
 @Service(value = "MovieService")
-public class MovieServiceImpl implements MovieService {
+public class MovieServiceImpl extends AbstractService implements MovieService {
 
 	@Autowired
 	private MovieRepository movieDAO;
@@ -18,7 +18,7 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<Movie> findExcludingIds(List<String> ids)
 			throws GenericException {
-		return movieDAO.findExcludingIds(ids);
+		return movieDAO.findByIdNotIn(ids, getDefaultPageable());
 	}
 
 }

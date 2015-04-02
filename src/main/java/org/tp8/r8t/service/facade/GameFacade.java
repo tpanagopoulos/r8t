@@ -13,6 +13,7 @@ import org.tp8.r8t.model.impl.Rating;
 import org.tp8.r8t.model.impl.Result;
 import org.tp8.r8t.service.intf.MovieService;
 import org.tp8.r8t.service.intf.RatingService;
+import org.tp8.r8t.service.intf.ResultService;
 
 @Component("GameFacade")
 public class GameFacade {
@@ -22,6 +23,9 @@ public class GameFacade {
 
 	@Autowired
 	private RatingService ratingService;
+
+	@Autowired
+	private ResultService resultService;
 
 	public List<Movie> start(String userId) throws GenericException {
 
@@ -39,7 +43,9 @@ public class GameFacade {
 	}
 
 	public Result finish(List<Rating> ratings) throws GenericException {
-		return ratingService.submit(ratings);
+		ratingService.submit(ratings);
+
+		return resultService.constructResult(ratings);
 	}
 
 }

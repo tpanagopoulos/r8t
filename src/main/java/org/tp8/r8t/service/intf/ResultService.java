@@ -5,15 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.tp8.r8t.exc.GenericException;
 import org.tp8.r8t.model.impl.Rating;
+import org.tp8.r8t.model.impl.Result;
 
 /**
  * The Interface CountryService.
  */
-@Service("MovieService")
-public interface RatingService {
+@Service("ResultService")
+public interface ResultService {
 
-	public List<Rating> findByUser(String userId) throws GenericException;
-
-	public void submit(List<Rating> ratings) throws GenericException;
+	public Result constructResult(List<Rating> ratings) throws GenericException;
 
 }
