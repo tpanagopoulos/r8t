@@ -27,9 +27,26 @@
 			<h:panelGrid id="grid" columns="1" cellpadding="4">
 
 				<h:outputText value="Finished" />
-
-				<p:commandButton action="#{gameBean.submitAnswer(item.name)}"
-					value="#{item.name}" />
+	
+				<p:dataTable var="item" value="#{gameBean.game.result.resultEntries}">
+					
+					<p:column headerText="#{msg['movie.title']}">
+						<h:outputText value="#{item.movie}" />
+					</p:column>
+					
+					<p:column headerText="#{msg['average.rating']}">
+						<h:outputText value="#{item.average}" />
+					</p:column>
+					
+					<p:column headerText="#{msg['current.rating']}">
+						<h:outputText value="#{item.current}" />
+					</p:column>
+					
+				</p:dataTable>
+				
+				<h:outputLink value=".">
+					<h:outputFormat value="#{msg['return']}" />
+				</h:outputLink>
 
 			</h:panelGrid>
 

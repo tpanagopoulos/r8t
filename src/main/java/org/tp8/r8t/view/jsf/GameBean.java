@@ -1,6 +1,5 @@
 package org.tp8.r8t.view.jsf;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +11,7 @@ import org.tp8.r8t.model.enums.Score;
 import org.tp8.r8t.model.impl.Game;
 import org.tp8.r8t.model.impl.Movie;
 import org.tp8.r8t.model.impl.Rating;
+import org.tp8.r8t.model.impl.Result;
 
 @ManagedBean(name = "gameBean")
 @SessionScoped
@@ -23,6 +23,14 @@ public class GameBean extends AbstractBean {
 	private Game game;
 
 	private short curItem;
+
+	public short getCurItem() {
+		return curItem;
+	}
+
+	public Game getGame() {
+		return game;
+	}
 
 	public String startNew() {
 		// TODO: Determine userId from logged in user
@@ -59,7 +67,7 @@ public class GameBean extends AbstractBean {
 		return game.getSelectedMovies().get(curItem);
 	}
 
-	public void submitAnswer(String scoreName) {
+	public String submitAnswer(String scoreName) {
 		Score score = Score.valueOf(scoreName);
 
 		Rating rating = new Rating();
@@ -73,20 +81,24 @@ public class GameBean extends AbstractBean {
 
 		curItem++;
 
-		if (curItem >= game.getSelectedMovies().size()) {
-			finish();
+		String result = "play";
+		if (curItem == (game.getSelectedMovies().size()) ) {
+			result = finish();
 		}
+		
+		return result;
 	}
 
 	public String finish() {
 		try {
 			addMessage("Successfully finished", null);
-			getGameFacade().finish(game.getRatings());
+			Result result = getGameFacade().finish(game.getRatings());
+			game.setResult(result);
 		} catch (GenericException exc) {
 			addError("Could not finish game", exc.getMessage());
 		}
 
-		return "finished";
+		return "finish";
 	}
 
 }

@@ -14,7 +14,7 @@
 		<h:form id="breadCrumb">
 			<p:breadCrumb>
 				<p:menuitem value="#{msg['index']}" url="./index.xhtml" />
-				<p:menuitem value="#{msg['books']}" url="#" />
+				<p:menuitem value="#{msg['play']}" url="#" />
 			</p:breadCrumb>
 		</h:form>
 
@@ -26,12 +26,12 @@
 
 			<h:panelGrid id="grid" columns="1" cellpadding="4">
 
-<!-- 				<p:outputLabel value="#{gameBean.nextItem.title}" /> -->
+				<p:outputLabel id="currentStatus" value="#{gameBean.curItem + 1} / #{gameBean.game.selectedMovies.size()}" />
 
 				<p:dataTable var="item" value="#{gameBean.getAvailableAnswers()}">
 					
 					<p:column headerText="#{gameBean.nextItem.title}">
-						<p:commandButton action="#{gameBean.submitAnswer(item)}" value="#{item}" />
+						<p:commandButton action="#{gameBean.submitAnswer(item)}" value="#{item}" update="@form" />
 					</p:column>
 
 				</p:dataTable>

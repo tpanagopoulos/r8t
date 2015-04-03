@@ -1,9 +1,8 @@
 package org.tp8.r8t.model.impl;
 
-import java.util.Map;
+import java.util.List;
 
 import org.tp8.r8t.model.AbstractModel;
-import org.tp8.r8t.model.enums.Score;
 
 public class Result extends AbstractModel {
 
@@ -13,9 +12,7 @@ public class Result extends AbstractModel {
 
 	private String userId;
 
-	private Map<String, Score> averageRatings;
-
-	private Map<String, Score> userRatings;
+	private List<ResultEntry> resultEntries;
 
 	public String getId() {
 		return id;
@@ -33,20 +30,12 @@ public class Result extends AbstractModel {
 		this.userId = userId;
 	}
 
-	public Map<String, Score> getAverageRatings() {
-		return averageRatings;
+	public List<ResultEntry> getResultEntries() {
+		return resultEntries;
 	}
 
-	public void setAverageRatings(Map<String, Score> averageRatings) {
-		this.averageRatings = averageRatings;
-	}
-
-	public Map<String, Score> getUserRatings() {
-		return userRatings;
-	}
-
-	public void setUserRatings(Map<String, Score> userRatings) {
-		this.userRatings = userRatings;
+	public void setResultEntries(List<ResultEntry> resultEntries) {
+		this.resultEntries = resultEntries;
 	}
 
 }

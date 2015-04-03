@@ -18,6 +18,8 @@ public class Game extends AbstractModel {
 
 	private List<Rating> ratings;
 
+	private Result result;
+
 	private long duration;
 
 	public String getId() {
@@ -50,6 +52,14 @@ public class Game extends AbstractModel {
 
 	public void setRatings(List<Rating> ratings) {
 		this.ratings = ratings;
+	}
+
+	public Result getResult() {
+		return result;
+	}
+
+	public void setResult(Result result) {
+		this.result = result;
 	}
 
 	public long getDuration() {

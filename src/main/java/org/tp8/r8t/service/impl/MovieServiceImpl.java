@@ -19,7 +19,7 @@ public class MovieServiceImpl extends AbstractService implements MovieService {
 
 	@PostConstruct
 	public void initialize() {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 100; i++) {
 			Movie movie = new Movie();
 			movie.setId("" + i);
 			movie.setTitle("title" + i);
