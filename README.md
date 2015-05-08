@@ -8,3 +8,11 @@ This project requires Elastic Search running in order to run. To run the docker 
 # In order to delete index :
 
    curl -XDELETE 'http://localhost:9200/rating/'
+   
+# Docker 
+
+	docker build -t tpanagopoulos/tomcat8:1.0-SNAPSHOT .
+
+	docker run -p 8080:8080 --name tomcat8 tpanagopoulos/tomcat8:1.0-SNAPSHOT
+
+	docker-compose up
